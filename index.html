@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voyelle &amp; Consonne – Le Grand Duel</title>
+<meta name="description" content="Deux joueurs, deux très mauvais perdants ! Voyelle contre Consonne : jeux de société, jeux vidéo, mauvaise foi et fous rires. En live mardi et jeudi à 20h sur Twitch.">
+<meta property="og:title" content="Voyelle & Consonne – Le Grand Duel">
+<meta property="og:description" content="Deux joueurs, deux très mauvais perdants ! En live mardi et jeudi à 20h sur Twitch.">
+<meta property="og:image" content="img/banniere.jpg">
+<meta name="theme-color" content="#E63B2E">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --rouge:#E63B2E; --bleu:#2D5BD7; --or:#F2B544; --creme:#FFF1D6; --encre:#2A1A12; }
+  * { box-sizing:border-box; }
+  html { background:var(--creme); }
+  body { margin:0; min-height:100vh; font-family:"Fredoka",system-ui,sans-serif; color:var(--encre);
+    background:
+      radial-gradient(circle at 50% 0, rgba(242,181,68,.55), transparent 55%),
+      repeating-conic-gradient(from 0deg at 50% -10%, #E63B2E 0 6deg, #2D5BD7 6deg 12deg);
+    background-attachment:fixed; padding:24px 16px 40px; }
+  .carte { max-width:520px; margin:0 auto; background:var(--creme); border:6px solid var(--encre); border-radius:32px;
+    box-shadow:0 0 0 8px var(--or), 0 0 0 14px var(--encre), 10px 14px 0 14px rgba(0,0,0,.3); padding:28px 20px 24px; text-align:center; }
+  .photo { width:132px; height:132px; border-radius:50%; border:6px solid var(--encre); box-shadow:0 0 0 6px var(--or); margin-top:-4px; }
+  h1 { font-family:"Titan One",Impact,sans-serif; font-weight:400; font-size:clamp(30px,8vw,42px); line-height:1; margin:16px 0 8px;
+    color:var(--creme); -webkit-text-stroke:6px var(--encre); paint-order:stroke fill; text-shadow:4px 5px 0 var(--encre); }
+  h1 .v { color:var(--rouge); } h1 .c { color:var(--bleu); }
+  .ruban { display:inline-block; font-family:"Titan One",sans-serif; font-size:18px; background:var(--or); padding:4px 18px;
+    border:4px solid var(--encre); border-radius:10px; box-shadow:4px 5px 0 var(--encre); transform:rotate(-2deg); }
+  .accroche { font-size:17px; line-height:1.4; margin:18px 4px 6px; }
+  .planning { display:flex; gap:10px; justify-content:center; margin:16px 0 6px; flex-wrap:wrap; }
+  .jour { flex:1 1 140px; border:4px solid var(--encre); border-radius:16px; padding:10px 8px; color:#fff; font-weight:700; box-shadow:4px 5px 0 var(--encre); }
+  .jour b { display:block; font-family:"Titan One",sans-serif; font-weight:400; font-size:20px; -webkit-text-stroke:3px var(--encre); paint-order:stroke fill; }
+  .mardi { background:var(--rouge); } .jeudi { background:var(--bleu); }
+  .video { position:relative; margin:20px 0 6px; border:5px solid var(--encre); border-radius:18px; overflow:hidden; aspect-ratio:16/9; background:#000 url(https://i.ytimg.com/vi/Fy54nOPGCkA/hqdefault.jpg) center/cover; box-shadow:5px 6px 0 var(--encre); cursor:pointer; }
+  .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .video .play { position:absolute; left:50%; top:50%; translate:-50% -50%; width:76px; height:76px; border-radius:50%; background:var(--rouge);
+    border:5px solid var(--encre); display:grid; place-items:center; box-shadow:4px 5px 0 var(--encre); }
+  .video .play::after { content:""; margin-left:6px; border-left:24px solid #fff; border-top:15px solid transparent; border-bottom:15px solid transparent; }
+  .legende { font-size:14px; margin:0 0 18px; opacity:.8; }
+  .liens { display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+  .lien { display:flex; align-items:center; gap:14px; text-decoration:none; color:#fff; font-weight:700; font-size:18px; text-align:left;
+    padding:12px 16px; border:4px solid var(--encre); border-radius:16px; box-shadow:5px 6px 0 var(--encre); transition:transform .12s, box-shadow .12s; }
+  .lien:hover, .lien:focus-visible { transform:translate(-2px,-2px) rotate(-.5deg); box-shadow:7px 8px 0 var(--encre); outline:none; }
+  .lien:active { transform:translate(3px,4px); box-shadow:2px 2px 0 var(--encre); }
+  .lien svg { width:30px; height:30px; flex:none; }
+  .lien small { display:block; font-weight:500; font-size:13px; opacity:.9; }
+  .twitch { background:#7B3FE4; } .youtube { background:var(--rouge); } .tiktok { background:var(--encre); }
+  .insta { background:var(--bleu); } .discord { background:#5865F2; } .soutien { background:var(--or); color:var(--encre); }
+  .camp { margin-top:22px; font-family:"Titan One",sans-serif; font-size:20px; }
+  .camp .v { color:var(--rouge); } .camp .c { color:var(--bleu); }
+  footer { text-align:center; margin-top:26px; font-size:13px; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); }
+  @media (prefers-reduced-motion: reduce) { .lien { transition:none; } }
+</style>
+</head>
+<body>
+<main class="carte">
+  <img class="photo" src="img/profil.png" alt="Voyelle et Consonne, face à face">
+  <h1><span class="v">Voyelle</span> &amp; <span class="c">Consonne</span></h1>
+  <div class="ruban">LE GRAND DUEL</div>
+  <p class="accroche">Deux joueurs, deux très mauvais perdants&nbsp;! Jeux de société, jeux vidéo, mauvaise foi et fous rires garantis.</p>
+
+  <div class="planning">
+    <div class="jour mardi"><b>MARDI 20H</b>🎮 Jeux vidéo</div>
+    <div class="jour jeudi"><b>JEUDI 20H</b>🎲 Jeux de société</div>
+  </div>
+
+  <div class="video" id="video" role="button" tabindex="0" aria-label="Lire la bande-annonce"><div class="play"></div></div>
+  <p class="legende">La bande-annonce du Grand Duel</p>
+
+  <nav class="liens">
+    <a class="lien twitch" href="https://www.twitch.tv/voyelle_et_consonne">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M4 2 2.5 5.5V20h4.5v2.5h2.5l2.5-2.5h3.6L21.5 14V2H4zm15.5 11-3 3h-4l-2.5 2.5V16H6V4h13.5v9z"/><path d="M15 7h2v5h-2zM10.5 7h2v5h-2z"/></svg>
+      <span>Twitch<small>Nos lives, mardi &amp; jeudi 20h</small></span></a>
+    <a class="lien youtube" href="https://www.youtube.com/@VoyelleetConsonne">
+      <svg viewBox="0 0 24 24"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#fff"/><path d="m10 8.8 5.6 3.2-5.6 3.2z" fill="#E63B2E"/></svg>
+      <span>YouTube<small>Rediffusions et shorts</small></span></a>
+    <a class="lien tiktok" href="https://www.tiktok.com/@voyelleetconsonne?lang=fr">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M14.5 2h3c.3 2.4 1.8 4 4 4.3v3c-1.5 0-2.9-.4-4-1.2v7.1a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.1a3.1 3.1 0 1 0 2.3 3V2z"/></svg>
+      <span>TikTok<small>Nos pires défaites en format court</small></span></a>
+    <a class="lien insta" href="https://www.instagram.com/voyelle_et_consonne/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="#fff" stroke="none"/></svg>
+      <span>Instagram<small>Les coulisses de nos soirées jeux</small></span></a>
+    <a class="lien discord" href="https://discord.gg/SrQsSqz3N">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M19.6 5.2A17 17 0 0 0 15.4 4l-.5 1.1a15.6 15.6 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17.1a17 17 0 0 0 5.2 2.6l1.1-1.8c-.6-.2-1.2-.5-1.8-.9l.4-.3a12.2 12.2 0 0 0 11.6 0l.4.3c-.6.4-1.2.7-1.8.9l1.1 1.8a17 17 0 0 0 5.2-2.6c.4-4.5-.7-8.4-3.1-11.9zM8.5 14.7c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1zm7 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1z"/></svg>
+      <span>Discord<small>Choisis ton camp et viens discuter</small></span></a>
+    <a class="lien soutien" href="https://streamelements.com/voyelle_et_consonne/tip">
+      <svg viewBox="0 0 24 24" fill="#E63B2E" stroke="#2A1A12" stroke-width="1.6"><path d="M12 20.5s-7.5-4.6-9-9.3C2 7.7 4.3 4.5 7.6 4.5c2 0 3.4 1.1 4.4 2.5 1-1.4 2.4-2.5 4.4-2.5 3.3 0 5.6 3.2 4.6 6.7-1.5 4.7-9 9.3-9 9.3z"/></svg>
+      <span>Nous soutenir<small>Un don = une fanfare « MERCI ! » en direct</small></span></a>
+  </nav>
+
+  <p class="camp">Team <span class="v">Voyelle</span> ou Team <span class="c">Consonne</span>&nbsp;?</p>
+</main>
+<footer>© Voyelle &amp; Consonne – Le Grand Duel</footer>
+<script>
+  // Loads the YouTube player only when clicked (faster page, no tracking before).
+  const v = document.getElementById("video");
+  const load = () => { v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/Fy54nOPGCkA?autoplay=1&rel=0" title="Bande-annonce Voyelle & Consonne" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; v.style.cursor = "default"; };
+  v.addEventListener("click", load, { once: true });
+  v.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); load(); } }, { once: true });
+</script>
+</body>
+</html>
